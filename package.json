@@ -1,0 +1,22 @@
+{
+  "name": "frontend",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "next",
+    "build": "next build",
+    "start": "next start"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "next": "^8.0.3",
+    "react": "^16.8.5",
+    "react-dom": "^16.8.5"
+  },
+  "devDependencies": {
+    "eslint": "^5.15.3",
+    "eslint-plugin-react": "^7.12.4"
+  }
+}
