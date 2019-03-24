@@ -1,5 +1,6 @@
-const Index = () => {
-  return <div>Welcome to next.js!</div>
-}
+import React from 'react'
+import Homepage from '../components/pages/index/Homepage'
+
+const Index = () => <Homepage />
 
 export default Index
