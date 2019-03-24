@@ -5,7 +5,7 @@ function Meta() {
   return (
     <Head>
       <link
-        href="https://fonts.googleapis.com/css?family=Montserrat"
+        href="https://fonts.googleapis.com/css?family=Montserrat:200,400,600"
         rel="stylesheet"
       />
       <meta name="viewport" content="initial-scale=1.0, width=device-width" />

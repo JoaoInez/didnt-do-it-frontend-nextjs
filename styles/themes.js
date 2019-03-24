@@ -1,23 +1,27 @@
-const mainTheme = {
-  turqoise: '#55D6BE',
+const lightTheme = {
+  green: '#40F99B',
   beige: '#F4F1DE',
-  orchid: '#A42CD6',
-  lapis: '#2364AA',
+  purple: '#A42CD6',
+  blue: '#2364AA',
   pink: '#FC6471',
-  primary: '#FFFFFF',
-  accent: '#000000',
-  secondary: '#EEEEEE'
+  white: '#FFFFFF',
+  black: '#000000',
+  grey: '#EEEEEE',
+  primary: 'white',
+  accent: 'black'
 }
 
 const darkTheme = {
-  turqoise: '#55D6BE',
+  green: '#40F99B',
   beige: '#F4F1DE',
-  orchid: '#A42CD6',
-  lapis: '#2364AA',
+  purple: '#A42CD6',
+  blue: '#2364AA',
   pink: '#FC6471',
-  primary: '#000000',
-  accent: '#FFFFFF',
-  secondary: '#EEEEEE'
+  white: '#FFFFFF',
+  black: '#000000',
+  grey: '#EEEEEE',
+  primary: 'black',
+  accent: 'white'
 }
 
-export { mainTheme, darkTheme }
+export { lightTheme, darkTheme }
