@@ -152,7 +152,7 @@ const Homepage = () => (
           <Slogan>Because we all know you didn't</Slogan>
         </Centered>
         <Centered>
-          <GetStarted size="lg" margin="0 10px" bgColor="pink">
+          <GetStarted size="lg" margin="0 10px" bgColor="purple">
             Get started
           </GetStarted>
           <MaybeLater size="lg" margin="0 10px" color="grey" dark={20}>
