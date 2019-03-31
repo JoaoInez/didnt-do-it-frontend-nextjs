@@ -47,7 +47,7 @@ const MainHeading = styled(Heading)`
 
   @keyframes heading {
     from {
-      transform: translateX(-50px);
+      transform: translateX(-75px);
       opacity: 0;
     }
     to {
@@ -66,7 +66,7 @@ const Slogan = styled(Title)`
 
   @keyframes entrance {
     from {
-      transform: translateX(-75px);
+      transform: translateX(-100px);
       opacity: 0;
     }
     to {

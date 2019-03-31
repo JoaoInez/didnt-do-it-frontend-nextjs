@@ -24,6 +24,7 @@ const Pill = styled.button`
           : 0};
   box-shadow: 0 4px 2px ${({ theme }) => theme.grey};
   margin: ${({ margin }) => margin};
+  transition: box-shadow 0.15s ease-in-out;
 
   &:hover {
     box-shadow: 0 4px 2px ${({ theme }) => darken(theme.grey, 10)};
@@ -63,6 +64,7 @@ const PillOutline = styled.button`
           ? '5px 10px'
           : 0};
   margin: ${({ margin }) => margin};
+  transition: box-shadow 0.15s ease-in-out;
 
   &:hover {
     box-shadow: 0 0 0 2px
@@ -125,6 +127,7 @@ const Button = styled.button`
           : 0};
   box-shadow: 0 4px 2px ${({ theme }) => theme.grey};
   margin: ${({ margin }) => margin};
+  transition: box-shadow 0.15s ease-in-out;
 
   &:hover {
     box-shadow: 0 4px 2px ${({ theme }) => darken(theme.grey, 10)};
