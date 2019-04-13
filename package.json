@@ -4,15 +4,24 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "next",
+    "dev": "node ./lib/querySchema.js && next",
     "build": "next build",
     "start": "next start"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "apollo-boost": "^0.3.1",
+    "apollo-cache-inmemory": "^1.5.1",
+    "apollo-client": "^2.5.1",
+    "apollo-link-http": "^1.5.14",
+    "fs": "0.0.1-security",
+    "graphql": "^14.2.1",
+    "graphql-tag": "^2.10.1",
     "next": "^8.0.3",
+    "node-fetch": "^2.3.0",
     "react": "^16.8.5",
+    "react-apollo": "^2.5.4",
     "react-dom": "^16.8.5",
     "styled-components": "^4.2.0"
   },

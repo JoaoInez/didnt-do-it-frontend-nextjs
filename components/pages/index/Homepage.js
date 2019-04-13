@@ -14,7 +14,7 @@ const Section = styled.div`
 
 const MainSection = styled(Section)`
   clip-path: polygon(0 0, 100% 0, 100% 80%, 0 100%);
-  height: 80vh;
+  height: 70vh;
   margin-bottom: -16vh;
   position: relative;
   animation-name: main_section;

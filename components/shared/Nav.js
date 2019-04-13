@@ -1,15 +1,29 @@
 import React from 'react'
 import styled from 'styled-components'
-import { Title, Anchor, Button } from '../ui'
+import Link from 'next/link'
+import gql from 'graphql-tag'
+import { Query } from 'react-apollo'
+import { Title, Anchor } from '../ui'
+
+const CURRENT_USER = gql`
+  query CURRENT_USER {
+    currentUser {
+      id
+      username
+      todos {
+        id
+        task
+        completed
+      }
+    }
+  }
+`
 
 const Navbar = styled.div`
-  position: fixed;
-  top: 0;
   display: flex;
   justify-content: center;
   background-color: ${({ theme }) => theme.white};
   width: 100%;
-  z-index: 99;
   padding: 20px 0;
 `
 
@@ -48,9 +62,19 @@ const Nav = () => (
             About, but in bold
           </Anchor>
         </Item>
-        <Item>
-          <Button bgColor="purple">Login</Button>
-        </Item>
+        <Query query={CURRENT_USER}>
+          {({ data: { currentUser }, loading, error }) => {
+            if (loading) return <p>Loading...</p>
+            if (error) return <p>Error</p>
+            return !currentUser ? (
+              <Item>
+                <Link href="/login">
+                  <a>Login</a>
+                </Link>
+              </Item>
+            ) : null
+          }}
+        </Query>
       </Half>
     </Inner>
   </Navbar>
