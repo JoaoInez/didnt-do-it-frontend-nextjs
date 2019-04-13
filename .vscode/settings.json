@@ -2,7 +2,6 @@
   "prettier.eslintIntegration": true,
   "files.exclude": {
     ".next/": true,
-    ".vscode": true,
     "node_modules/": true
   }
 }
