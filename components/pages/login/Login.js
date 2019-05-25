@@ -1,10 +1,10 @@
-import React from 'react'
+import React, { useState } from 'react'
 import gql from 'graphql-tag'
 import { Mutation } from 'react-apollo'
 
 const LOG_IN = gql`
-  mutation LOG_IN {
-    logIn(data: { email: "third@gmail.com", password: "password" }) {
+  mutation LOG_IN($email: String!, $password: String!) {
+    logIn(data: { email: $email, password: $password }) {
       ... on User {
         id
       }
@@ -15,19 +15,50 @@ const LOG_IN = gql`
   }
 `
 
-const onSubmit = logIn => e => {
-  e.preventDefault()
-  logIn()
-}
-
 const Login = () => {
+  const [state, setState] = useState({
+    email: '',
+    password: ''
+  })
+
+  const onSubmit = logIn => e => {
+    e.preventDefault()
+    logIn()
+  }
+
+  const onChange = ({ target: { name, value } }) => {
+    setState({ ...state, [name]: value })
+  }
+
+  const { email, password } = state
+
   return (
-    <Mutation mutation={LOG_IN} onCompleted={data => console.log(data)}>
-      {(logIn, { data, loading, error }) => (
+    <Mutation
+      mutation={LOG_IN}
+      variables={state}
+      onCompleted={data => console.log(data)}
+      onError={error => console.log(error)}
+    >
+      {(logIn, { loading, error }) => (
         <form method="post" onSubmit={onSubmit(logIn)}>
-          <input type="email" name="email" placeholder="Email address" />
-          <input type="password" name="password" placeholder="Password" />
-          <button type="submit">Log In</button>
+          <input
+            type="email"
+            name="email"
+            placeholder="Email address"
+            onChange={onChange}
+            value={email}
+          />
+          <input
+            type="password"
+            name="password"
+            placeholder="Password"
+            onChange={onChange}
+            value={password}
+          />
+          <button type="submit" disabled={loading}>
+            Log In
+          </button>
+          {error && <p>{error.toString()}</p>}
         </form>
       )}
     </Mutation>

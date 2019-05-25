@@ -3,7 +3,7 @@ import styled from 'styled-components'
 import Link from 'next/link'
 import gql from 'graphql-tag'
 import { Query } from 'react-apollo'
-import { Title, Anchor } from '../ui'
+import { Title, Anchor, Button } from '../ui'
 
 const CURRENT_USER = gql`
   query CURRENT_USER {
@@ -51,26 +51,34 @@ const Nav = () => (
   <Navbar>
     <Inner>
       <Half>
-        <Logo>Didn't do it</Logo>
+        <Link href="/">
+          <a>
+            <Logo>Didn't do it</Logo>
+          </a>
+        </Link>
       </Half>
       <Half justify="flex-end">
         <Item>
-          <Anchor underline="purple">About</Anchor>
+          <Link href="/about">
+            <Anchor underline="purple">About</Anchor>
+          </Link>
         </Item>
         <Item>
-          <Anchor weight="bold" underline="purple">
-            About, but in bold
-          </Anchor>
+          <Link href="/about">
+            <Anchor weight="bold" underline="purple">
+              About, but in bold
+            </Anchor>
+          </Link>
         </Item>
         <Query query={CURRENT_USER}>
           {({ data: { currentUser }, loading, error }) => {
             if (loading) return <p>Loading...</p>
             if (error) return <p>Error</p>
-            return !currentUser ? (
+            return currentUser ? (
               <Item>
-                <Link href="/login">
+                <Button bgColor="purple">
                   <a>Login</a>
-                </Link>
+                </Button>
               </Item>
             ) : null
           }}
