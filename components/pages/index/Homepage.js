@@ -1,6 +1,7 @@
-import React from 'react'
+import React, { useState } from 'react'
 import styled from 'styled-components'
 import { P, Title, Heading, Pill, PillOutline } from '../../ui'
+import AuthModal from '../../shared/AuthModal'
 
 const Section = styled.div`
   background-color: ${({ theme, color = 'white' }) => theme[color]};
@@ -141,84 +142,104 @@ const Footer = styled.footer`
   text-align: center;
 `
 
-const Homepage = () => (
-  <>
-    <MainSection>
-      <div>
+const Homepage = () => {
+  const [state, setState] = useState({
+    open: false
+  })
+
+  const onOpen = () => {
+    setState({ ...state, open: true })
+  }
+
+  const onClose = () => {
+    setState({ ...state, open: false })
+  }
+
+  return (
+    <>
+      <AuthModal open={state.open} closeModal={onClose} />
+      <MainSection>
+        <div>
+          <Centered>
+            <MainHeading weight="bold">Didn't do it</MainHeading>
+          </Centered>
+          <Centered>
+            <Slogan>Because we all know you didn't</Slogan>
+          </Centered>
+          <Centered>
+            <GetStarted
+              size="lg"
+              margin="0 10px"
+              bgColor="purple"
+              onClick={onOpen}
+            >
+              Get started
+            </GetStarted>
+            <MaybeLater size="lg" margin="0 10px" color="grey" dark={20}>
+              Maybe later
+            </MaybeLater>
+          </Centered>
+        </div>
+      </MainSection>
+      <Section color="blue" padding="16vh 0 50px 0">
         <Centered>
-          <MainHeading weight="bold">Didn't do it</MainHeading>
+          <SectionTitle color="white">
+            When your to do later becomes to do never
+          </SectionTitle>
         </Centered>
-        <Centered>
-          <Slogan>Because we all know you didn't</Slogan>
-        </Centered>
-        <Centered>
-          <GetStarted size="lg" margin="0 10px" bgColor="purple">
-            Get started
-          </GetStarted>
-          <MaybeLater size="lg" margin="0 10px" color="grey" dark={20}>
-            Maybe later
-          </MaybeLater>
-        </Centered>
-      </div>
-    </MainSection>
-    <Section color="blue" padding="16vh 0 50px 0">
-      <Centered>
-        <SectionTitle color="white">
-          When your to do later becomes to do never
-        </SectionTitle>
-      </Centered>
-      <Grid>
-        <Item justify="center">
-          <Title color="white">Denial</Title>
-        </Item>
-        <Item>
-          <P color="white">
-            You didn't fail your objectives, you just didn't have the time to
-            work on them. Week's pretty busy.
-          </P>
-        </Item>
-        <Item justify="center">
-          <Title color="white">Anger</Title>
-        </Item>
-        <Item>
-          <P color="white">
-            Damnit, if only Netflix hadn't released this show this week, you
-            would have actually worked on your objectives. Screw you Netflix!
-          </P>
-        </Item>
-        <Item justify="center">
-          <Title color="white">Bargaining</Title>
-        </Item>
-        <Item>
-          <P color="white">
-            Ok, maybe if you work twice as hard next week, everyhting will be
-            fine.
-          </P>
-        </Item>
-        <Item justify="center">
-          <Title color="white">Depression</Title>
-        </Item>
-        <Item>
-          <P color="white">
-            It's impossible, if you couldn't do it this, there's no way you can
-            do twice as much next week.
-          </P>
-        </Item>
-        <Item justify="center">
-          <Title color="white">Acceptance</Title>
-        </Item>
-        <Item>
-          <P color="white">
-            You know what, it's ok. Life is about realizing you won't be getting
-            anywhere, so might as well give up now.
-          </P>
-        </Item>
-      </Grid>
-    </Section>
-    <Footer>
-      <P>Made by someone who could have been watching Netflix</P>
-    </Footer>
-  </>
-)
+        <Grid>
+          <Item justify="center">
+            <Title color="white">Denial</Title>
+          </Item>
+          <Item>
+            <P color="white">
+              You didn't fail your objectives, you just didn't have the time to
+              work on them. Week's pretty busy.
+            </P>
+          </Item>
+          <Item justify="center">
+            <Title color="white">Anger</Title>
+          </Item>
+          <Item>
+            <P color="white">
+              Damnit, if only Netflix hadn't released this show this week, you
+              would have actually worked on your objectives. Screw you Netflix!
+            </P>
+          </Item>
+          <Item justify="center">
+            <Title color="white">Bargaining</Title>
+          </Item>
+          <Item>
+            <P color="white">
+              Ok, maybe if you work twice as hard next week, everyhting will be
+              fine.
+            </P>
+          </Item>
+          <Item justify="center">
+            <Title color="white">Depression</Title>
+          </Item>
+          <Item>
+            <P color="white">
+              It's impossible, if you couldn't do it this, there's no way you
+              can do twice as much next week.
+            </P>
+          </Item>
+          <Item justify="center">
+            <Title color="white">Acceptance</Title>
+          </Item>
+          <Item>
+            <P color="white">
+              You know what, it's ok. Life is about realizing you won't be
+              getting anywhere, so might as well give up now.
+            </P>
+          </Item>
+        </Grid>
+      </Section>
+      <Footer>
+        <P>Made by someone who could have been playing video games</P>
+      </Footer>
+    </>
+  )
+}
 
 export default Homepage
