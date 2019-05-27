@@ -28,5 +28,23 @@ const GlobalStyle = createGlobalStyle`
     cursor: pointer;
     text-decoration: none;
   }
+
+  input {
+    border: none;
+    padding: 10px;
+    width: 100%;
+    background-color: ${({ theme }) => theme.grey};
+    border-radius: 4px;
+    transition: box-shadow 0.15s ease-in-out;
+
+    &:focus {
+      outline: none;
+      box-shadow: 0 0 0 2px ${({ theme }) => theme.purple};
+    }
+  }
+
+  form {
+    width: 100%;
+  }
 `
 export default GlobalStyle

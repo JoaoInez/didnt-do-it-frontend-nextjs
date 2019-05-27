@@ -44,8 +44,8 @@ class MyApp extends App {
       <Container>
         <ApolloProvider client={client}>
           <Meta />
-          <GlobalStyle />
           <Page>
+            <GlobalStyle />
             <Component {...pageProps} />
           </Page>
         </ApolloProvider>

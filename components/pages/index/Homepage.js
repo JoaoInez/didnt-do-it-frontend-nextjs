@@ -143,21 +143,19 @@ const Footer = styled.footer`
 `
 
 const Homepage = () => {
-  const [state, setState] = useState({
-    open: false
-  })
+  const [openAuth, setOpenAuth] = useState(false)
 
   const onOpen = () => {
-    setState({ ...state, open: true })
+    setOpenAuth(true)
   }
 
   const onClose = () => {
-    setState({ ...state, open: false })
+    setOpenAuth(false)
   }
 
   return (
     <>
-      <AuthModal open={state.open} closeModal={onClose} />
+      <AuthModal open={openAuth} closeModal={onClose} />
       <MainSection>
         <div>
           <Centered>

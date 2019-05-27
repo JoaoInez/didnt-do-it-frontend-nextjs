@@ -41,7 +41,7 @@ const ModalContent = styled.div`
   background-color: white;
   margin-bottom: 20%;
   padding: 40px 20px 20px 20px;
-  width: ${({ size = 'sm' }) => (size ? '400px' : size == 'md' ? '1000px' : 0)};
+  width: ${({ size = 'sm' }) => (size ? '300px' : size == 'md' ? '1000px' : 0)};
   border-radius: 4px;
   box-shadow: 1px 1px 8px black;
   position: relative;
