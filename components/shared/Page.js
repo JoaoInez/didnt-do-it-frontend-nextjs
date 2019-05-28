@@ -19,7 +19,7 @@ const Page = ({ children }) => (
 )
 
 Page.propTypes = {
-  children: PropTypes.element.isRequired
+  children: PropTypes.array.isRequired
 }
 
 export default Page

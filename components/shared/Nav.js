@@ -86,24 +86,7 @@ const Nav = () => {
           </Item>
           <Query query={CURRENT_USER}>
             {({ data: { currentUser }, loading, error }) => {
-              if (loading)
-                return (
-                  <Item>
-                    <Button bgColor="purple" onClick={onOpen} disabled>
-                      <a>Loading</a>
-                    </Button>
-                  </Item>
-                )
-              if (error)
-                return (
-                  <Item>
-                    <Button bgColor="purple" onClick={onOpen} disabled>
-                      <a>Error!</a>
-                    </Button>
-                  </Item>
-                )
-              console.log(currentUser)
-              return !currentUser ? (
+              return loading || error || !currentUser ? (
                 <Item>
                   <Button bgColor="purple" onClick={onOpen}>
                     <a>Login</a>
@@ -113,7 +96,7 @@ const Nav = () => {
                 <Item>
                   <Link href="/dashboard">
                     <Button bgColor="purple">
-                      <a>To Don't ></a>
+                      <a>Dashboard</a>
                     </Button>
                   </Link>
                 </Item>
