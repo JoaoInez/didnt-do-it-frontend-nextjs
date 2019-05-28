@@ -1,7 +1,24 @@
 import React, { useState } from 'react'
 import styled from 'styled-components'
+import Link from 'next/link'
+import gql from 'graphql-tag'
+import { Query } from 'react-apollo'
 import { P, Title, Heading, Pill, PillOutline } from '../../ui'
 import AuthModal from '../../shared/AuthModal'
+
+const CURRENT_USER = gql`
+  query CURRENT_USER {
+    currentUser {
+      id
+      username
+      todos {
+        id
+        task
+        completed
+      }
+    }
+  }
+`
 
 const Section = styled.div`
   background-color: ${({ theme, color = 'white' }) => theme[color]};
@@ -165,14 +182,28 @@ const Homepage = () => {
             <Slogan>Because we all know you didn't</Slogan>
           </Centered>
           <Centered>
-            <GetStarted
-              size="lg"
-              margin="0 10px"
-              bgColor="purple"
-              onClick={onOpen}
-            >
-              Get started
-            </GetStarted>
+            <Query query={CURRENT_USER}>
+              {({ data: { currentUser }, loading, error }) => {
+                return loading || error || !currentUser ? (
+                  <GetStarted
+                    size="lg"
+                    margin="0 10px"
+                    bgColor="purple"
+                    onClick={onOpen}
+                  >
+                    Get started
+                  </GetStarted>
+                ) : (
+                  <Link href="/dashboard">
+                    <a>
+                      <GetStarted size="lg" margin="0 10px" bgColor="purple">
+                        Dashboard
+                      </GetStarted>
+                    </a>
+                  </Link>
+                )
+              }}
+            </Query>
             <MaybeLater size="lg" margin="0 10px" color="grey" dark={20}>
               Maybe later
             </MaybeLater>
