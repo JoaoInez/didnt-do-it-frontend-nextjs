@@ -100,7 +100,7 @@ const Anchor = styled.a`
 `
 
 Anchor.defaultProps = {
-  color: 'black',
+  color: 'accent',
   underline: 'black'
 }
 

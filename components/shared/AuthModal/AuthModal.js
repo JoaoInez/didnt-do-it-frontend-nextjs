@@ -6,7 +6,7 @@ import Login from './Login'
 const AuthModal = ({ open, closeModal }) => {
   return (
     <Modal open={open} closeModal={closeModal}>
-      <Login />
+      <Login closeModal={closeModal} />
     </Modal>
   )
 }
