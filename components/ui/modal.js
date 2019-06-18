@@ -45,6 +45,7 @@ const ModalContent = styled.div`
   border-radius: 4px;
   box-shadow: 1px 1px 8px black;
   position: relative;
+  z-index: 2;
   animation-name: ${({ open, close }) =>
     open && !close ? 'open_modal' : open && close ? 'close_modal' : 'none'};
   animation-duration: 0.2s;
@@ -71,6 +72,12 @@ const ModalContent = styled.div`
       opacity: 0;
     }
   }
+`
+
+const ModalEmpty = styled.div`
+  position: absolute;
+  height: 100%;
+  width: 100%;
 `
 
 const Close = styled.button`
@@ -101,6 +108,7 @@ export const Modal = ({ children, size = 'sm', open = false, closeModal }) => {
 
   return (
     <ModalWrapper open={open} close={closeAnim}>
+      <ModalEmpty onClick={onClose} />
       <ModalContent size={size} open={open} close={closeAnim}>
         <Close onClick={onClose}>&times;</Close>
         {children}

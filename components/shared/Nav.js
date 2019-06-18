@@ -10,12 +10,6 @@ const CURRENT_USER = gql`
   query CURRENT_USER {
     currentUser {
       id
-      username
-      todos {
-        id
-        task
-        completed
-      }
     }
   }
 `
@@ -26,6 +20,7 @@ const Navbar = styled.div`
   background-color: ${({ theme }) => theme.white};
   width: 100%;
   padding: 20px 0;
+  border-top: 6px solid ${({ theme, color }) => theme[color]};
 `
 
 const Inner = styled.div`
@@ -61,32 +56,32 @@ const Nav = () => {
   }
 
   return (
-    <Navbar>
-      <AuthModal open={openAuth} closeModal={onClose} />
-      <Inner>
-        <Half>
-          <Link href="/">
-            <a>
-              <Logo>Didn't do it</Logo>
-            </a>
-          </Link>
-        </Half>
-        <Half justify="flex-end">
-          <Item>
-            <Link href="/about">
-              <Anchor underline="purple">About</Anchor>
-            </Link>
-          </Item>
-          <Item>
-            <Link href="/about">
-              <Anchor weight="bold" underline="purple">
-                About, but in bold
-              </Anchor>
-            </Link>
-          </Item>
-          <Query query={CURRENT_USER}>
-            {({ data: { currentUser }, loading, error }) => {
-              return loading || error || !currentUser ? (
+    <Query query={CURRENT_USER}>
+      {({ data: { currentUser }, loading, error }) => (
+        <Navbar color={!currentUser ? 'white' : 'purple'}>
+          <AuthModal open={openAuth} closeModal={onClose} />
+          <Inner>
+            <Half>
+              <Link href="/">
+                <a>
+                  <Logo>Didn't do it</Logo>
+                </a>
+              </Link>
+            </Half>
+            <Half justify="flex-end">
+              <Item>
+                <Link href="/about">
+                  <Anchor underline="purple">About</Anchor>
+                </Link>
+              </Item>
+              <Item>
+                <Link href="/about">
+                  <Anchor weight="bold" underline="purple">
+                    About, but in bold
+                  </Anchor>
+                </Link>
+              </Item>
+              {loading || error || !currentUser ? (
                 <Item>
                   <Button bgColor="purple" onClick={onOpen}>
                     <a>Login</a>
@@ -100,12 +95,12 @@ const Nav = () => {
                     </Button>
                   </Link>
                 </Item>
-              )
-            }}
-          </Query>
-        </Half>
-      </Inner>
-    </Navbar>
+              )}
+            </Half>
+          </Inner>
+        </Navbar>
+      )}
+    </Query>
   )
 }
 

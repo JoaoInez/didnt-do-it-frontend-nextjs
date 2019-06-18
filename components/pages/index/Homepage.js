@@ -10,12 +10,6 @@ const CURRENT_USER = gql`
   query CURRENT_USER {
     currentUser {
       id
-      username
-      todos {
-        id
-        task
-        completed
-      }
     }
   }
 `
@@ -272,3 +266,4 @@ const Homepage = () => {
 }
 
 export default Homepage
+export { CURRENT_USER }

@@ -7,8 +7,8 @@ const lightTheme = {
   white: '#FFFFFF',
   black: '#000000',
   grey: '#EEEEEE',
-  primary: 'white',
-  accent: 'black'
+  primary: '#EEEEEE',
+  accent: '#454545'
 }
 
 const darkTheme = {
@@ -20,8 +20,8 @@ const darkTheme = {
   white: '#FFFFFF',
   black: '#000000',
   grey: '#EEEEEE',
-  primary: 'black',
-  accent: 'white'
+  primary: '#454545',
+  accent: '#FFFFFF'
 }
 
 export { lightTheme, darkTheme }

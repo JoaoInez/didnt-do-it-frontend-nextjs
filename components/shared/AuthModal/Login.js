@@ -1,9 +1,11 @@
 import React, { useState } from 'react'
+import PropTypes from 'prop-types'
 import styled from 'styled-components'
 import Router from 'next/router'
 import gql from 'graphql-tag'
 import { Mutation } from 'react-apollo'
 import { Title, Button } from '../../ui'
+import { CURRENT_USER } from '../../pages/index/Homepage'
 
 const LOG_IN = gql`
   mutation LOG_IN($email: String!, $password: String!) {
@@ -47,7 +49,7 @@ const Anchor = styled.a`
   text-align: center;
 `
 
-const Login = () => {
+const Login = ({ closeModal }) => {
   const [credentials, setCredentials] = useState({
     email: '',
     password: ''
@@ -55,9 +57,9 @@ const Login = () => {
 
   const { email, password } = credentials
 
-  const handleSubmit = logIn => e => {
+  const handleSubmit = mutation => e => {
     e.preventDefault()
-    logIn()
+    mutation()
   }
 
   const handleChange = ({ target: { name, value } }) => {
@@ -70,10 +72,12 @@ const Login = () => {
       <Mutation
         mutation={LOG_IN}
         variables={credentials}
+        refetchQueries={[{ query: CURRENT_USER }]}
         onCompleted={({ logIn }) => {
           if (logIn.message) {
             alert(logIn.message)
           } else if (logIn.id) {
+            closeModal()
             Router.push('/dashboard')
           }
         }}
@@ -108,6 +112,8 @@ const Login = () => {
   )
 }
 
-Login.propTypes = {}
+Login.propTypes = {
+  closeModal: PropTypes.func.isRequired
+}
 
 export default Login
